@@ -1,5 +1,6 @@
 import os
 import re
+import tiktoken
 
 # First Reading the File
 file_path = 'the_verdict.txt'
@@ -39,16 +40,12 @@ class SimpleTokenizerV2:
         text = re.sub(r'\s+([,.:;?_!"()\'])', r'\1', text)
         return text
 
-text1 = "Hello, Do you like tea?"
-text2 = "In the sunlit terraces of the palace"
-text = " <|endoftext|> ".join([text1, text2])
 
+x = input("Enter a sentence to tokenize: ")
+tokenizer = tiktoken.get_encoding("gpt2")
+encoded = tokenizer.encode(x, allowed_special={"<|endoftext|>"})
 
-tokenizer = SimpleTokenizerV2(vocab)
-encoded_text = tokenizer.encode(text)
-
-print(tokenizer.decode(encoded_text))
-
+print("Encoded:", encoded)
 
 
 
