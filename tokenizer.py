@@ -1,4 +1,5 @@
 import os
+
 import re
 import tiktoken
 import torch
@@ -84,16 +85,5 @@ pos_embedding_layer = torch.nn.Embedding(context_length, output_dim)
 pos_embeddings = pos_embedding_layer(torch.arange(context_length))
 
 input_embeddings = token_embeddings + pos_embeddings
-
-
-    
-
-
-
-
-
-
-
-
 
 
